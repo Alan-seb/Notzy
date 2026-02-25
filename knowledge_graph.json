@@ -1,0 +1,1822 @@
+{
+  "nodes": {
+    "subject::DS": {
+      "type": "subject",
+      "name": "DS"
+    },
+    "unit::DS::Memory": {
+      "type": "unit",
+      "name": "Memory"
+    },
+    "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf": {
+      "type": "note",
+      "pdf_path": "/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "content_hash": "f1f50b0bdebeaeb752a0a345b5fb47bce447ea8ec0ea153e4e60b48f686c9183",
+      "text": "Memory allocation functions – malloc, calloc Malloc Memory allocation functions There are 4 library functions provided by C defined under <stdlib.h> header file to facilitate dynamic memory allocation in C programming. They are:\n· malloc() · calloc() · free() · realloc() malloc():\n“malloc” or “memory allocation” method in C is used to dynamically allocate a single large block of memory with the specified size. It returns a pointer of type void which can be cast into a pointer of any form.\nSyntax:\nptr = (cast-type*) malloc(byte-size) For Example:\nptr = (int*) malloc(100 * sizeof(int));\nSince the size of int is 4 bytes, this statement will allocate 400 bytes of memory. And, the pointer ptr holds the address of the first byte in the allocated memory.\nmalloc(): example #include <stdio.h> #include <stdlib.h> int main() { int* ptr;\nint n=5, i, sum = 0;\nptr = (int*)malloc(n * sizeof(int));\nfor (i = 0; i < n; ++i) { ptr[i] = i + 1;\nprintf(\"The elements of the array are: \");\nfor (i = 0; i < n; ++i) { printf(\"%d, \", ptr[i]);\nreturn 0;\nThis is DC for C"
+    },
+    "concept::DS::Memory::allocation functions": {
+      "type": "concept",
+      "term": "allocation functions",
+      "normalized": "allocation functions",
+      "aliases": []
+    },
+    "concept::DS::Memory::defined under": {
+      "type": "concept",
+      "term": "defined under",
+      "normalized": "defined under",
+      "aliases": []
+    },
+    "concept::DS::Memory::dynamically allocate": {
+      "type": "concept",
+      "term": "dynamically allocate",
+      "normalized": "dynamically allocate",
+      "aliases": []
+    },
+    "concept::DS::Memory::facilitate dynamic memory": {
+      "type": "concept",
+      "term": "facilitate dynamic memory",
+      "normalized": "facilitate dynamic memory",
+      "aliases": []
+    },
+    "concept::DS::Memory::header file": {
+      "type": "concept",
+      "term": "header file",
+      "normalized": "header file",
+      "aliases": []
+    },
+    "concept::DS::Memory::holds the address": {
+      "type": "concept",
+      "term": "holds the address",
+      "normalized": "holds the address",
+      "aliases": []
+    },
+    "concept::DS::Memory::int main": {
+      "type": "concept",
+      "term": "int main",
+      "normalized": "int main",
+      "aliases": []
+    },
+    "concept::DS::Memory::library functions provided": {
+      "type": "concept",
+      "term": "library functions provided",
+      "normalized": "library functions provided",
+      "aliases": []
+    },
+    "concept::DS::Memory::malloc memory": {
+      "type": "concept",
+      "term": "Malloc Memory",
+      "normalized": "malloc memory",
+      "aliases": []
+    },
+    "concept::DS::Memory::memory allocation": {
+      "type": "concept",
+      "term": "memory allocation",
+      "normalized": "memory allocation",
+      "aliases": []
+    },
+    "concept::DS::Memory::single large block": {
+      "type": "concept",
+      "term": "single large block",
+      "normalized": "single large block",
+      "aliases": []
+    },
+    "concept::DS::Memory::specified size": {
+      "type": "concept",
+      "term": "specified size",
+      "normalized": "specified size",
+      "aliases": []
+    },
+    "concept::DS::Memory::type void which": {
+      "type": "concept",
+      "term": "type void which",
+      "normalized": "type void which",
+      "aliases": []
+    },
+    "unit::DS::Sorting_and_searching": {
+      "type": "unit",
+      "name": "Sorting_and_searching"
+    },
+    "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf": {
+      "type": "note",
+      "pdf_path": "/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "content_hash": "9725bc8c85c592f18cf567c7bc4468372c3df4b030639b920205a5cee1a32a9d",
+      "text": "UNIT II Searching Techniques Searching is the process of looking through the data contained in a data structure and determining if a specific value is present. (And potentially returning it.) The contains methods of the ArrayList, for example, is a method that searches the list for a given value and returns true of false.\n1. Linear Search The most basic search algorithm is a linear search. This is just a fancy name for “start at the first element and go through the list until you find what you are looking for.” It is the simplest search.\nHere is a simple implementation for an array:\npublic static int linearSearch(int[] a, int value) { int n = a.length;\nfor (int i = 0; i < n; i++) { if (a[i] == value) return i;\nreturn -1;\nIf you look carefully at it, you’ll realize that the efficiency is O(N). Is it possible to do better than this, though?\n2. Binary Search Binary search is a searching algorithm that is faster than O(N). It has a catch, though: It requires the array you are searching to already be sorted. If you have a sorted array, then you can search it as follows:\n1. Imagine you are searching for element v.\n2. Start at the middle of the array. Is v smaller or larger than the middle element? If smaller, then do the algorithm again on the left half of the array. If larger, then do the algorithm again on the right half of the array.\nBasically, with every step, we cut the number of elements we are searching for in half. Here is a simple implementation:\npublic static int binarySearch(int[] a, int value) { int lowIndex = 0;\nint highIndex = a.length - 1;\nwhile (lowIndex <= highIndex) { int midIndex = (lowIndex + highIndex) / 2;\nif (value < a[midIndex]) highIndex = midIndex - 1;\nelse if (value > a[midIndex]) lowIndex = midIndex + 1;\nelse // found it!\nreturn midIndex;\nreturn -1; // The value doesn't exist The efficiency of this is more complicated than the things we’ve been analyzing so far. We aren’t doing N work in the worst case, because even in the worst case we are cutting the array in half each step. When an algorithm cuts the data in half at each step, that efficiency is logarithmic. In this case, O(log2 N)). In efficiency, we frequently drop the base 2 from logarithmic efficiency, so we can just write this as O(log N) This is significantly better than an O(N) algorithm."
+    },
+    "concept::DS::Sorting_and_searching::are searching for": {
+      "type": "concept",
+      "term": "are searching for",
+      "normalized": "are searching for",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::because even": {
+      "type": "concept",
+      "term": "because even",
+      "normalized": "because even",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::been analyzing": {
+      "type": "concept",
+      "term": "been analyzing",
+      "normalized": "been analyzing",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::better than this": {
+      "type": "concept",
+      "term": "better than this",
+      "normalized": "better than this",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::binary search binary": {
+      "type": "concept",
+      "term": "Binary Search Binary",
+      "normalized": "binary search binary",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::can just write": {
+      "type": "concept",
+      "term": "can just write",
+      "normalized": "can just write",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::contains methods": {
+      "type": "concept",
+      "term": "contains methods",
+      "normalized": "contains methods",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::cut the number": {
+      "type": "concept",
+      "term": "cut the number",
+      "normalized": "cut the number",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::data contained": {
+      "type": "concept",
+      "term": "data contained",
+      "normalized": "data contained",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::data structure and": {
+      "type": "concept",
+      "term": "data structure and",
+      "normalized": "data structure and",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::each step": {
+      "type": "concept",
+      "term": "each step",
+      "normalized": "each step",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::fancy name for": {
+      "type": "concept",
+      "term": "fancy name for",
+      "normalized": "fancy name for",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::faster than": {
+      "type": "concept",
+      "term": "faster than",
+      "normalized": "faster than",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::from logarithmic efficiency": {
+      "type": "concept",
+      "term": "from logarithmic efficiency",
+      "normalized": "from logarithmic efficiency",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::given value and": {
+      "type": "concept",
+      "term": "given value and",
+      "normalized": "given value and",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::half each step": {
+      "type": "concept",
+      "term": "half each step",
+      "normalized": "half each step",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::int value": {
+      "type": "concept",
+      "term": "int value",
+      "normalized": "int value",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::linear search": {
+      "type": "concept",
+      "term": "linear search",
+      "normalized": "linear search",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::looking for": {
+      "type": "concept",
+      "term": "looking for",
+      "normalized": "looking for",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::method that searches": {
+      "type": "concept",
+      "term": "method that searches",
+      "normalized": "method that searches",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::middle element": {
+      "type": "concept",
+      "term": "middle element",
+      "normalized": "middle element",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::more complicated than": {
+      "type": "concept",
+      "term": "more complicated than",
+      "normalized": "more complicated than",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::most basic search": {
+      "type": "concept",
+      "term": "most basic search",
+      "normalized": "most basic search",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::potentially returning": {
+      "type": "concept",
+      "term": "potentially returning",
+      "normalized": "potentially returning",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::public static int": {
+      "type": "concept",
+      "term": "public static int",
+      "normalized": "public static int",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::requires the array": {
+      "type": "concept",
+      "term": "requires the array",
+      "normalized": "requires the array",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::returns true": {
+      "type": "concept",
+      "term": "returns true",
+      "normalized": "returns true",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::searching algorithm that": {
+      "type": "concept",
+      "term": "searching algorithm that",
+      "normalized": "searching algorithm that",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::searching techniques searching": {
+      "type": "concept",
+      "term": "Searching Techniques Searching",
+      "normalized": "searching techniques searching",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::significantly better than": {
+      "type": "concept",
+      "term": "significantly better than",
+      "normalized": "significantly better than",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::simple implementation": {
+      "type": "concept",
+      "term": "simple implementation",
+      "normalized": "simple implementation",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::simple implementation for": {
+      "type": "concept",
+      "term": "simple implementation for",
+      "normalized": "simple implementation for",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::sorted array": {
+      "type": "concept",
+      "term": "sorted array",
+      "normalized": "sorted array",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::specific value": {
+      "type": "concept",
+      "term": "specific value",
+      "normalized": "specific value",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::then you can": {
+      "type": "concept",
+      "term": "then you can",
+      "normalized": "then you can",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::through the list": {
+      "type": "concept",
+      "term": "through the list",
+      "normalized": "through the list",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::until you find": {
+      "type": "concept",
+      "term": "until you find",
+      "normalized": "until you find",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::value doesn": {
+      "type": "concept",
+      "term": "value doesn",
+      "normalized": "value doesn",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::you are searching": {
+      "type": "concept",
+      "term": "you are searching",
+      "normalized": "you are searching",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::you have": {
+      "type": "concept",
+      "term": "you have",
+      "normalized": "you have",
+      "aliases": []
+    },
+    "concept::DS::Sorting_and_searching::you look carefully": {
+      "type": "concept",
+      "term": "you look carefully",
+      "normalized": "you look carefully",
+      "aliases": []
+    },
+    "unit::DS::linear_search": {
+      "type": "unit",
+      "name": "linear_search"
+    },
+    "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf": {
+      "type": "note",
+      "pdf_path": "/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "content_hash": "4225e785a12995efcafbac71d106ab4713364783cf6136f1fdb57c7ddf06f84c",
+      "text": "Linear / Sequential Search Linear search is also called as sequential search algorithm. It is the simplest searching algorithm. In Linear search, we simply traverse the list completely and match each element of the list with the item whose location is to be found. If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.\nIt is the simplest of all the searching techniques which does not expect the specific ordering of data.\nSequential search is nothing but searching an element / record in a linear way. This can be in arrays or in linked lists.\nLinear search algorithm finds a given element on a list of elements with O( n ) time complexity where n is the total number of elements in the lists. Start the search from the beginning by comparing the ‘key’ in each case and by scanning all the elements one by one until the end of the array or the linked list. If search is successful, the entire record of that particular ‘key’ or the index of the record or the pointer to the record is returned. If the search is unsuccessful, it gives a failure notification ‘-1’ is returned.\nLinear search is implemented using the following steps Step 1: Read the search element (key).\nStep 2: Compare the search element with the first element in the list.\nStep 3: If both are matched, then display search element is found and terminate the function.\nStep 4: If both are not matched, then compare search element with the next element in the list Step 5: Repeat the Steps 3 & 4 until the search element is compared with the last element in the list.\nStep 6: If the last element in the list does not match, then display element not found and terminate the function.\nAlgorithm: Linear Search Algorithm: Linear Search (list [ ], n, key) Let list [ ] be a linear array with n elements and key is an element to be searched in the list Step 1: Set i = 0 Step 2: while (i < n) do If list [i] == key then return i; //Key found at ith location end while Step 3: return -1; //key not found Example - Linear Search Consider the following list of elements and element to be searched:\nSearch element (Key): 12 Step 1: Search element 12 is compared with the first element 65 Step 2: Search element 12 is compared with the next element 20 Step 3: Search element 12 is compared with the next element 10 Step 4: Search element 12 is compared with the next element 55 Step 5: Search element 12 is compared with the next element 32 Step 6: Search element 12 is compared with the next element 12 Both are matching, so move to the next element. Terminate the function and display the element found at index ‘5’."
+    },
+    "concept::DS::linear_search::all the searching": {
+      "type": "concept",
+      "term": "all the searching",
+      "normalized": "all the searching",
+      "aliases": []
+    },
+    "concept::DS::linear_search::also called": {
+      "type": "concept",
+      "term": "also called",
+      "normalized": "also called",
+      "aliases": []
+    },
+    "concept::DS::linear_search::are matching": {
+      "type": "concept",
+      "term": "are matching",
+      "normalized": "are matching",
+      "aliases": []
+    },
+    "concept::DS::linear_search::both are matched": {
+      "type": "concept",
+      "term": "both are matched",
+      "normalized": "both are matched",
+      "aliases": []
+    },
+    "concept::DS::linear_search::both are not": {
+      "type": "concept",
+      "term": "both are not",
+      "normalized": "both are not",
+      "aliases": []
+    },
+    "concept::DS::linear_search::display the element": {
+      "type": "concept",
+      "term": "display the element",
+      "normalized": "display the element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::each case and": {
+      "type": "concept",
+      "term": "each case and",
+      "normalized": "each case and",
+      "aliases": []
+    },
+    "concept::DS::linear_search::elements and element": {
+      "type": "concept",
+      "term": "elements and element",
+      "normalized": "elements and element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::elements and key": {
+      "type": "concept",
+      "term": "elements and key",
+      "normalized": "elements and key",
+      "aliases": []
+    },
+    "concept::DS::linear_search::elements one": {
+      "type": "concept",
+      "term": "elements one",
+      "normalized": "elements one",
+      "aliases": []
+    },
+    "concept::DS::linear_search::failure notification": {
+      "type": "concept",
+      "term": "failure notification",
+      "normalized": "failure notification",
+      "aliases": []
+    },
+    "concept::DS::linear_search::first element": {
+      "type": "concept",
+      "term": "first element",
+      "normalized": "first element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::following steps": {
+      "type": "concept",
+      "term": "following steps",
+      "normalized": "following steps",
+      "aliases": []
+    },
+    "concept::DS::linear_search::found and terminate": {
+      "type": "concept",
+      "term": "found and terminate",
+      "normalized": "found and terminate",
+      "aliases": []
+    },
+    "concept::DS::linear_search::given element": {
+      "type": "concept",
+      "term": "given element",
+      "normalized": "given element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::in linear": {
+      "type": "concept",
+      "term": "In Linear",
+      "normalized": "in linear",
+      "aliases": []
+    },
+    "concept::DS::linear_search::ith location end": {
+      "type": "concept",
+      "term": "ith location end",
+      "normalized": "ith location end",
+      "aliases": []
+    },
+    "concept::DS::linear_search::key not found": {
+      "type": "concept",
+      "term": "key not found",
+      "normalized": "key not found",
+      "aliases": []
+    },
+    "concept::DS::linear_search::key then return": {
+      "type": "concept",
+      "term": "key then return",
+      "normalized": "key then return",
+      "aliases": []
+    },
+    "concept::DS::linear_search::last element": {
+      "type": "concept",
+      "term": "last element",
+      "normalized": "last element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::linear search": {
+      "type": "concept",
+      "term": "Linear Search",
+      "normalized": "linear search",
+      "aliases": []
+    },
+    "concept::DS::linear_search::linear search algorithm": {
+      "type": "concept",
+      "term": "Linear Search Algorithm",
+      "normalized": "linear search algorithm",
+      "aliases": []
+    },
+    "concept::DS::linear_search::linear search consider": {
+      "type": "concept",
+      "term": "Linear Search Consider",
+      "normalized": "linear search consider",
+      "aliases": []
+    },
+    "concept::DS::linear_search::linear way": {
+      "type": "concept",
+      "term": "linear way",
+      "normalized": "linear way",
+      "aliases": []
+    },
+    "concept::DS::linear_search::linked lists": {
+      "type": "concept",
+      "term": "linked lists",
+      "normalized": "linked lists",
+      "aliases": []
+    },
+    "concept::DS::linear_search::list completely and": {
+      "type": "concept",
+      "term": "list completely and",
+      "normalized": "list completely and",
+      "aliases": []
+    },
+    "concept::DS::linear_search::match each element": {
+      "type": "concept",
+      "term": "match each element",
+      "normalized": "match each element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::next element": {
+      "type": "concept",
+      "term": "next element",
+      "normalized": "next element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::not found and": {
+      "type": "concept",
+      "term": "not found and",
+      "normalized": "not found and",
+      "aliases": []
+    },
+    "concept::DS::linear_search::not match": {
+      "type": "concept",
+      "term": "not match",
+      "normalized": "not match",
+      "aliases": []
+    },
+    "concept::DS::linear_search::nothing but searching": {
+      "type": "concept",
+      "term": "nothing but searching",
+      "normalized": "nothing but searching",
+      "aliases": []
+    },
+    "concept::DS::linear_search::search algorithm finds": {
+      "type": "concept",
+      "term": "search algorithm finds",
+      "normalized": "search algorithm finds",
+      "aliases": []
+    },
+    "concept::DS::linear_search::sequential search algorithm": {
+      "type": "concept",
+      "term": "sequential search algorithm",
+      "normalized": "sequential search algorithm",
+      "aliases": []
+    },
+    "concept::DS::linear_search::sequential search linear": {
+      "type": "concept",
+      "term": "Sequential Search Linear",
+      "normalized": "sequential search linear",
+      "aliases": []
+    },
+    "concept::DS::linear_search::specific ordering": {
+      "type": "concept",
+      "term": "specific ordering",
+      "normalized": "specific ordering",
+      "aliases": []
+    },
+    "concept::DS::linear_search::techniques which does": {
+      "type": "concept",
+      "term": "techniques which does",
+      "normalized": "techniques which does",
+      "aliases": []
+    },
+    "concept::DS::linear_search::terminate the function": {
+      "type": "concept",
+      "term": "terminate the function",
+      "normalized": "terminate the function",
+      "aliases": []
+    },
+    "concept::DS::linear_search::then compare search": {
+      "type": "concept",
+      "term": "then compare search",
+      "normalized": "then compare search",
+      "aliases": []
+    },
+    "concept::DS::linear_search::then display element": {
+      "type": "concept",
+      "term": "then display element",
+      "normalized": "then display element",
+      "aliases": []
+    },
+    "concept::DS::linear_search::then display search": {
+      "type": "concept",
+      "term": "then display search",
+      "normalized": "then display search",
+      "aliases": []
+    },
+    "concept::DS::linear_search::then the location": {
+      "type": "concept",
+      "term": "then the location",
+      "normalized": "then the location",
+      "aliases": []
+    },
+    "concept::DS::linear_search::time complexity where": {
+      "type": "concept",
+      "term": "time complexity where",
+      "normalized": "time complexity where",
+      "aliases": []
+    },
+    "concept::DS::linear_search::until the search": {
+      "type": "concept",
+      "term": "until the search",
+      "normalized": "until the search",
+      "aliases": []
+    }
+  },
+  "edges": [
+    {
+      "source": "unit::DS::Memory",
+      "target": "subject::DS",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "unit::DS::Memory",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::allocation functions",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::defined under",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::dynamically allocate",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::facilitate dynamic memory",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::header file",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::holds the address",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::int main",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::library functions provided",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::malloc memory",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::memory allocation",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::single large block",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::specified size",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf",
+      "target": "concept::DS::Memory::type void which",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/Memory_allocation_functions.pdf"
+    },
+    {
+      "source": "concept::DS::Memory::allocation functions",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::defined under",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::dynamically allocate",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::facilitate dynamic memory",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::header file",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::holds the address",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::int main",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::library functions provided",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::malloc memory",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::memory allocation",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::single large block",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::specified size",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Memory::type void which",
+      "target": "unit::DS::Memory",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "unit::DS::Sorting_and_searching",
+      "target": "subject::DS",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::are searching for",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::because even",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::been analyzing",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::better than this",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::binary search binary",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::can just write",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::contains methods",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::cut the number",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::data contained",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::data structure and",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::each step",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::fancy name for",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::faster than",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::from logarithmic efficiency",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::given value and",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::half each step",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::int value",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::linear search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::looking for",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::method that searches",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::middle element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::more complicated than",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::most basic search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::potentially returning",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::public static int",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::requires the array",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::returns true",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::searching algorithm that",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::searching techniques searching",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::significantly better than",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::simple implementation",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::simple implementation for",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::sorted array",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::specific value",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::then you can",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::through the list",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::until you find",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::value doesn",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::you are searching",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::you have",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf",
+      "target": "concept::DS::Sorting_and_searching::you look carefully",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/Linear Search and Binary search.pdf"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::are searching for",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::because even",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::been analyzing",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::better than this",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::binary search binary",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::can just write",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::contains methods",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::cut the number",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::data contained",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::data structure and",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::each step",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::fancy name for",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::faster than",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::from logarithmic efficiency",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::given value and",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::half each step",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::int value",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::linear search",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::looking for",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::method that searches",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::middle element",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::more complicated than",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::most basic search",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::potentially returning",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::public static int",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::requires the array",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::returns true",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::searching algorithm that",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::searching techniques searching",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::significantly better than",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::simple implementation",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::simple implementation for",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::sorted array",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::specific value",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::then you can",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::through the list",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::until you find",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::value doesn",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::you are searching",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::you have",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::Sorting_and_searching::you look carefully",
+      "target": "unit::DS::Sorting_and_searching",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "unit::DS::linear_search",
+      "target": "subject::DS",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "unit::DS::linear_search",
+      "relation": "belongs_to",
+      "source_note": "system"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::all the searching",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::also called",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::are matching",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::both are matched",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::both are not",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::display the element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::each case and",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::elements and element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::elements and key",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::elements one",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::failure notification",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::first element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::following steps",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::found and terminate",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::given element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::in linear",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::ith location end",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::key not found",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::key then return",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::last element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::linear search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::linear search algorithm",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::linear search consider",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::linear way",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::linked lists",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::list completely and",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::match each element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::next element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::not found and",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::not match",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::nothing but searching",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::search algorithm finds",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::sequential search algorithm",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::sequential search linear",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::specific ordering",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::techniques which does",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::terminate the function",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::then compare search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::then display element",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::then display search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::then the location",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::time complexity where",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf",
+      "target": "concept::DS::linear_search::until the search",
+      "relation": "mentions",
+      "source_note": "note::/Users/alox/Developer/notzy/PDF/LINEAR SEARCH.pdf"
+    },
+    {
+      "source": "concept::DS::linear_search::all the searching",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::also called",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::are matching",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::both are matched",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::both are not",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::display the element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::each case and",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::elements and element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::elements and key",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::elements one",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::failure notification",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::first element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::following steps",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::found and terminate",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::given element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::in linear",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::ith location end",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::key not found",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::key then return",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::last element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::linear search",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::linear search algorithm",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::linear search consider",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::linear way",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::linked lists",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::list completely and",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::match each element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::next element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::not found and",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::not match",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::nothing but searching",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::search algorithm finds",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::sequential search algorithm",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::sequential search linear",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::specific ordering",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::techniques which does",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::terminate the function",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::then compare search",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::then display element",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::then display search",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::then the location",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::time complexity where",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    },
+    {
+      "source": "concept::DS::linear_search::until the search",
+      "target": "unit::DS::linear_search",
+      "relation": "scoped_to",
+      "source_note": "system"
+    }
+  ]
+}
