@@ -1,5 +1,7 @@
 # Personal Knowledge Graph Engine
 ‼️STATUS:ONGOING
+
+
 A strictly deterministic, CLI-based tool for ingesting PDF notes into a structured knowledge graph.
 
 ## Features
